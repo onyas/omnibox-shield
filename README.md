@@ -4,6 +4,22 @@ A macOS native helper that visually shields Chrome's omnibox suggestion popup. I
 
 Type `;;` in the address bar to reveal suggestions for the rest of that omnibox session. Press Enter, Escape, or move focus away to hide again next time.
 
+## Why
+
+Chrome's address bar can expose browsing history and search suggestions as soon as the omnibox is focused. That is useful when you are alone, but awkward when you are presenting, screen sharing, recording a demo, or letting someone look at your screen.
+
+Without Omnibox Shield, Chrome shows the native history and suggestion popup:
+
+![Chrome omnibox suggestions without shield](resources/history-without-shield.png)
+
+With Omnibox Shield running, the suggestion area is covered until you intentionally reveal it:
+
+![Chrome omnibox suggestions covered by Omnibox Shield](resources/history-with-shield.png)
+
+The app does not delete, rewrite, or sync any browser data. It only places a temporary visual cover over Chrome's native suggestion popup.
+
+## Usage
+
 Build and run:
 
 ```sh
@@ -33,6 +49,14 @@ open "dist/Omnibox Shield.app"
 ```
 
 To install it permanently, move `dist/Omnibox Shield.app` into `/Applications`.
+
+The build script also creates a GitHub release asset:
+
+```sh
+dist/Omnibox.Shield.zip
+```
+
+Upload that ZIP to a GitHub release. The app's **Check for Updates...** menu item checks the latest release at `onyas/omnibox-shield`, looks for `Omnibox.Shield.zip`, downloads it when the release tag is newer than the installed app version, replaces the current app, and reopens it.
 
 After launching the app version for the first time, grant Accessibility permission to **Omnibox Shield** in **System Settings** → **Privacy & Security** → **Accessibility**. You may need to quit and reopen the app after enabling the permission.
 

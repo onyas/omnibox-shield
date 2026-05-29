@@ -21,6 +21,8 @@ cp "$ROOT_DIR/packaging/Info.plist" "$CONTENTS_DIR/Info.plist"
 swift "$ROOT_DIR/scripts/make_app_icon.swift" "$RESOURCES_DIR/AppIcon.icns"
 chmod +x "$MACOS_DIR/omnibox-shield"
 codesign --force --deep --sign - "$APP_DIR"
+/usr/bin/ditto -c -k --keepParent "$APP_DIR" "$ROOT_DIR/dist/Omnibox.Shield.zip"
 
 echo "Built app: $APP_DIR"
 echo "Open it with: open \"$APP_DIR\""
+echo "Release ZIP: $ROOT_DIR/dist/Omnibox.Shield.zip"
